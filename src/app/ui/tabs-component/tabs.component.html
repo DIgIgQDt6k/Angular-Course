@@ -1,0 +1,10 @@
+<div class="tabs">
+  <div *ngFor="let tab of tabs" class="tabs__tab" (click)="selectTab(tab)">
+    <div class="tab" [ngClass]="{ 'tab--active': tab.isActive }">
+      <p class="tab__content">{{ tab.title }}</p>
+      <span class="tab__close" (click)="closeTab(tab)">&times;</span>
+    </div>
+  </div>
+</div>
+
+<ng-content select="app-tab" ngProjectAs="[app-tab]"></ng-content>

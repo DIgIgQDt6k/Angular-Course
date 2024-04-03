@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  padding: 10px;
+}
+
+.tab-hidden {
+  display: none;
+}
+
+.tab-visible {
+  display: block;
+}
