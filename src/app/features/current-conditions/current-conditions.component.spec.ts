@@ -47,13 +47,9 @@ describe("CurrentConditionsComponent", () => {
 
     await TestBed.configureTestingModule({
       imports: [
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        RouterModule,
-        TabsComponent,
+        CurrentConditionsComponent,
       ],
-      declarations: [CurrentConditionsComponent],
+      declarations: [],
       providers: [
         { provide: LocationService, useValue: locationServiceSpy },
         { provide: WeatherService, useValue: weatherServiceSpy },

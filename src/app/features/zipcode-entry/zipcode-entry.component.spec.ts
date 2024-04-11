@@ -17,7 +17,7 @@ describe("ZipCodeEntryComponent", () => {
 
     await TestBed.configureTestingModule({
       imports: [BrowserModule],
-      declarations: [CurrentConditionsComponent],
+      declarations: [ZipcodeEntryComponent],
       providers: [{ provide: LocationService, useValue: locationServiceSpy }],
     }).compileComponents();
 

@@ -18,7 +18,6 @@ import {
   SimpleChanges,
   WritableSignal,
 } from "@angular/core";
-import { Router } from "@angular/router";
 import { Tab } from "app/types";
 
 @Directive({ selector: "app-tab", standalone: true })

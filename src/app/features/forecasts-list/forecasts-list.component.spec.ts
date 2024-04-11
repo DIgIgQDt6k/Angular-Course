@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ForecastsListComponent } from "./forecasts-list.component";
 import { WeatherService } from "../../services";
 import { BrowserModule, By } from "@angular/platform-browser";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, RouterModule } from "@angular/router";
 import { firstValueFrom, of } from "rxjs";
 import { Forecast } from "app/types";
 
@@ -27,7 +27,7 @@ describe("ForecastsListComponent", () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [BrowserModule],
+      imports: [BrowserModule, RouterModule],
       declarations: [ForecastsListComponent],
       providers: [
         { provide: WeatherService, useValue: weatherServiceSpy },

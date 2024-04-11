@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { WeatherService } from "../../services";
 import { ActivatedRoute } from "@angular/router";
-import { Forecast } from "../../types/forecast.type";
+import { Forecast } from "../../types";
 import { Observable, map, mergeMap } from "rxjs";
 
 @Component({

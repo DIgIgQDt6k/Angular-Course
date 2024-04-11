@@ -13,7 +13,6 @@ import { RouterModule } from "@angular/router";
 import { routing } from "./app.routing";
 import { HttpClientModule } from "@angular/common/http";
 import { ServiceWorkerModule } from "@angular/service-worker";
-import { environment } from "../environments/environment";
 import {
   AppTabDirective,
   TabsComponent,
@@ -24,7 +23,6 @@ import {
     AppComponent,
     ZipcodeEntryComponent,
     ForecastsListComponent,
-    CurrentConditionsComponent,
     MainPageComponent,
   ],
   imports: [
@@ -38,6 +36,7 @@ import {
     }),
     TabsComponent,
     AppTabDirective,
+    CurrentConditionsComponent,
   ],
   providers: [LocationService, WeatherService],
   bootstrap: [AppComponent],
