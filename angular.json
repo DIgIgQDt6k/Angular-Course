@@ -68,6 +68,9 @@
           "options": {
             "buildTarget": "ng-weather:build"
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     },
