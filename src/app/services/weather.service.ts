@@ -1,7 +1,8 @@
 import { Injectable, Signal, signal } from "@angular/core";
-import { Observable, firstValueFrom } from "rxjs";
+import { Observable, firstValueFrom, of, tap } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { CurrentConditions, ConditionsAndZip, Forecast } from "../types";
+import { CacheService } from "./cache.service";
 
 @Injectable()
 export class WeatherService {
@@ -11,9 +12,27 @@ export class WeatherService {
     "https://raw.githubusercontent.com/udacity/Sunshine-Version-2/sunshine_master/app/src/main/res/drawable-hdpi/";
   private currentConditions = signal<ConditionsAndZip[]>([]);
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private readonly cacheService: CacheService
+  ) {}
+
+  private _cacheDuration: number = 120;
+
+  public get cacheDuration() {
+    return this._cacheDuration;
+  }
+  public set cacheDuration(value: number) {
+    this._cacheDuration = value;
+  }
 
   public async addCurrentConditions(zipcode: string): Promise<void> {
+    const cahcedItem = this.cacheService.getItem<CurrentConditions>(zipcode);
+    if (cahcedItem) {
+      this.currentConditions.update((conditions) => [...conditions, condition]);
+      return;
+    }
+
     // Here we make a request to get the current conditions data from the API. Note the use of backticks and an expression to insert the zipcode
     const data = await firstValueFrom(
       this.http.get<CurrentConditions>(
@@ -21,13 +40,16 @@ export class WeatherService {
       )
     );
 
-    this.currentConditions.update((conditions) => [
-      ...conditions,
-      { zip: zipcode, data },
-    ]);
+    const condition = { zip: zipcode, data };
+
+    this.cacheService.setItem(zipcode, condition, {
+      cacheDuration: this._cacheDuration,
+    });
+
+    this.currentConditions.update((conditions) => [...conditions, condition]);
   }
 
-  removeCurrentConditions(zipcode: string) {
+  public removeCurrentConditions(zipcode: string) {
     this.currentConditions.update((conditions) => {
       for (let i in conditions) {
         if (conditions[i].zip == zipcode) conditions.splice(+i, 1);
@@ -36,18 +58,31 @@ export class WeatherService {
     });
   }
 
-  getCurrentConditions(): Signal<ConditionsAndZip[]> {
+  public getCurrentConditions(): Signal<ConditionsAndZip[]> {
     return this.currentConditions.asReadonly();
   }
 
-  getForecast(zipcode: string): Observable<Forecast> {
+  public getForecast(zipcode: string): Observable<Forecast> {
+    const cachedItem = this.cacheService.getItem<Forecast>(zipcode);
+    if (cachedItem) {
+      return of(cachedItem);
+    }
+
     // Here we make a request to get the forecast data from the API. Note the use of backticks and an expression to insert the zipcode
-    return this.http.get<Forecast>(
-      `${WeatherService.URL}/forecast/daily?zip=${zipcode},us&units=imperial&cnt=5&APPID=${WeatherService.APPID}`
-    );
+    return this.http
+      .get<Forecast>(
+        `${WeatherService.URL}/forecast/daily?zip=${zipcode},us&units=imperial&cnt=5&APPID=${WeatherService.APPID}`
+      )
+      .pipe(
+        tap((forecast) =>
+          this.cacheService.setItem(zipcode, forecast, {
+            cacheDuration: this._cacheDuration,
+          })
+        )
+      );
   }
 
-  getWeatherIcon(id): string {
+  public getWeatherIcon(id): string {
     if (id >= 200 && id <= 232)
       return WeatherService.ICON_URL + "art_storm.png";
     else if (id >= 501 && id <= 511)

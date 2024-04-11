@@ -22,7 +22,6 @@ import { CommonModule } from "@angular/common";
 })
 export class CurrentConditionsComponent {
   private weatherService = inject(WeatherService);
-  private router = inject(Router);
   protected locationService = inject(LocationService);
   protected currentConditionsByZip: Signal<ConditionsAndZip[]> =
     this.weatherService.getCurrentConditions();
