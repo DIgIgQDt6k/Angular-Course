@@ -27,9 +27,12 @@ export class WeatherService {
   }
 
   public async addCurrentConditions(zipcode: string): Promise<void> {
-    const cahcedItem = this.cacheService.getItem<CurrentConditions>(zipcode);
+    const cahcedItem = this.cacheService.getItem<ConditionsAndZip>(zipcode);
     if (cahcedItem) {
-      this.currentConditions.update((conditions) => [...conditions, condition]);
+      this.currentConditions.update((conditions) => [
+        ...conditions,
+        cahcedItem,
+      ]);
       return;
     }
 
