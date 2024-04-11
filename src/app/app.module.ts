@@ -31,7 +31,7 @@ import {
     HttpClientModule,
     RouterModule,
     routing,
-    ServiceWorkerModule.register("/ngsw-worker.js", {
+    ServiceWorkerModule.register("/Angular-Course/ngsw-worker.js", {
       enabled: true,
     }),
     TabsComponent,

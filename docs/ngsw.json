@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1712856853325,
+  "timestamp": 1712857779197,
   "index": "https://digigqdt6k.github.io/Angular-Course/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "https://digigqdt6k.github.io/Angular-Course/favicon.ico",
         "https://digigqdt6k.github.io/Angular-Course/index.html",
-        "https://digigqdt6k.github.io/Angular-Course/main.eaf8e26ebcbf2d5e.js",
+        "https://digigqdt6k.github.io/Angular-Course/main.4b873556c5bde67e.js",
         "https://digigqdt6k.github.io/Angular-Course/polyfills.4eb0e12b74077764.js",
         "https://digigqdt6k.github.io/Angular-Course/runtime.8ec97a0ffe2636bf.js",
         "https://digigqdt6k.github.io/Angular-Course/styles.9dfba5ebe9fe4c2c.css"
@@ -78,8 +78,8 @@
     "https://digigqdt6k.github.io/Angular-Course/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://digigqdt6k.github.io/Angular-Course/assets/weather.json": "66917a0e0b291aa6498489fc9820dfaa3529ceb9",
     "https://digigqdt6k.github.io/Angular-Course/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "https://digigqdt6k.github.io/Angular-Course/index.html": "1939d045e7efcc3b1874819fcea99896f8b63db6",
-    "https://digigqdt6k.github.io/Angular-Course/main.eaf8e26ebcbf2d5e.js": "c7e6b7cf8cde4d59c7a0f7c06d4c8beccbc76fd5",
+    "https://digigqdt6k.github.io/Angular-Course/index.html": "8e1603c3ba45825b861aac1190b1520c1f334c74",
+    "https://digigqdt6k.github.io/Angular-Course/main.4b873556c5bde67e.js": "e7d2abdc24034ba67993822dd485cfdb00490452",
     "https://digigqdt6k.github.io/Angular-Course/polyfills.4eb0e12b74077764.js": "76998cd515d460b2fa554a7cb3d9be556ebb7853",
     "https://digigqdt6k.github.io/Angular-Course/runtime.8ec97a0ffe2636bf.js": "b2f1671c077760a4b0bac09ad76c6e9e9749cc2b",
     "https://digigqdt6k.github.io/Angular-Course/styles.9dfba5ebe9fe4c2c.css": "c3a7b587155f4c6971fc3007d1c52b089633a159"
